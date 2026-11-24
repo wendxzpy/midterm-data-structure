@@ -1,0 +1,90 @@
+package handson_activity;
+
+import java.util.Arrays;
+
+public class SortingAlgorithms {
+
+
+    public static void bubbleSort(int[] arr) {
+        int n = arr.length;
+
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+
+                if (arr[j] > arr[j + 1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+    }
+
+    public static void selectionSort(int[] arr) {
+        int n = arr.length;
+
+        for (int i = 0; i < n - 1; i++) {
+            int minIndex = i;
+
+            for (int j = i + 1; j < n; j++) {
+                if (arr[j] < arr[minIndex]) {
+                    minIndex = j;
+                }
+            }
+
+            int temp = arr[i];
+            arr[i] = arr[minIndex];
+            arr[minIndex] = temp;
+        }
+    }
+
+
+    public static void insertionSort(int[] arr) {
+        int n = arr.length;
+
+        for (int i = 1; i < n; i++) {
+            int key = arr[i];
+            int j = i - 1;
+
+            while (j >= 0 && arr[j] > key) {
+                arr[j + 1] = arr[j];
+                j--;
+            }
+
+            arr[j + 1] = key;
+        }
+    }
+
+   
+    public static void main(String[] args) {
+
+        
+        int[] originalArray = {
+            45, 12, 78, 3, 56, 23, 89, 10, 34, 67
+        };
+
+        
+        int[] bubbleArray = Arrays.copyOf(originalArray, originalArray.length);
+        int[] selectionArray = Arrays.copyOf(originalArray, originalArray.length);
+        int[] insertionArray = Arrays.copyOf(originalArray, originalArray.length);
+
+        
+        System.out.println("Original Array:");
+        System.out.println(Arrays.toString(originalArray));
+
+        
+        bubbleSort(bubbleArray);
+        System.out.println("\nBubble Sort Result:");
+        System.out.println(Arrays.toString(bubbleArray));
+
+       
+        selectionSort(selectionArray);
+        System.out.println("\nSelection Sort Result:");
+        System.out.println(Arrays.toString(selectionArray));
+
+     
+        insertionSort(insertionArray);
+        System.out.println("\nInsertion Sort Result:");
+        System.out.println(Arrays.toString(insertionArray));
+    }
+}
